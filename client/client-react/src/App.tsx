@@ -36,11 +36,7 @@ function App() {
     setLoading(true);
     try {
       // Dynamic API URL based on current location
-      const apiUrl =
-        window.location.hostname === 'localhost' ||
-        window.location.hostname === '127.0.0.1'
-          ? 'http://localhost:8000'
-          : `http://${window.location.hostname}:8000`;
+      const apiUrl = 'https://digvijays-dictionary.onrender.com';
       const response = await axios.get(`${apiUrl}/${word}`);
       setWordData(response.data.message);
     } catch (err) {

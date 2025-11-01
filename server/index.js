@@ -1,7 +1,7 @@
 import express from 'express';
 import axios from 'axios';
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 10000;
 
 app.get('/:word', async (req, res) => {
   const data = await axios.get(

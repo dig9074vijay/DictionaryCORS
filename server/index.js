@@ -2,11 +2,14 @@ import express from 'express';
 import axios from 'axios';
 import pool from './db.js';
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 10000;
+
+app.use(cors());
 
 app.get('/:word', async (req, res) => {
   const { word } = req.params;

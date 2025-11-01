@@ -4,12 +4,14 @@ dotenv.config();
 
 const { Pool } = pg;
 
-// create a pool using DATABASE_URL
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL || '',
-  ssl: true,
-});
+const isProduction = process.env.NODE_ENV === 'production';
 
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: isProduction
+    ? { rejectUnauthorized: false } // ✅ required for Render
+    : false,
+});
 // initialize table
 async function initDB() {
   await pool.query(`

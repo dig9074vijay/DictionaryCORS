@@ -13,6 +13,10 @@ app.get('/:word', async (req, res) => {
     .json({ message: data.data[0] });
 });
 
+app.get('/', (req, res) => {
+  res.send('Server is up and running');
+});
+
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server is running on PORT : ${PORT}`);
 });
